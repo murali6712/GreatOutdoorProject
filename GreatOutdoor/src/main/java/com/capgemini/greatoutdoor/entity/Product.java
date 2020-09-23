@@ -19,7 +19,7 @@ public class Product {
 	@Column(name = "price", length = 5)
 	private int price;
 
-	@Column(length = 7)
+	@Column(name = "colour", length = 7)
 	private String colour;
 
 	@Column(name = "dimension", length = 10)
@@ -125,8 +125,6 @@ public class Product {
 		this.productCategory = productCategory;
 		this.productName = productName;
 	}
-	
-	
 
 	public Product(int price, String colour, String dimension, String specification, String manufacturer, int quantity,
 			String productCategory, String productName) {
