@@ -144,7 +144,7 @@ public class ProductController {
 	 * Date 	 : 22/09/2020
 	 */
 	
-	@DeleteMapping("/deleteproduct/{productId}")
+	@DeleteMapping("/deleteProduct/{productId}")
 	public ResponseEntity<String> deleteProductById(@PathVariable("productId") int productId) throws ProductException 
 	{
 		String result = null;

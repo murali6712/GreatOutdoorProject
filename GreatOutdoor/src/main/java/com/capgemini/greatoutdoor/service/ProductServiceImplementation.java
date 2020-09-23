@@ -1,6 +1,5 @@
 package com.capgemini.greatoutdoor.service;
 
-
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -10,13 +9,13 @@ import org.springframework.stereotype.Service;
 
 import com.capgemini.greatoutdoor.dao.ProductDao;
 import com.capgemini.greatoutdoor.entity.Product;
-
+import com.capgemini.greatoutdoor.exception.ProductException;
 
 @Service("ProductService")
 @Transactional
 
-public class ProductServiceImplementation implements ProductService{
-	
+public class ProductServiceImplementation implements ProductService {
+
 	@Autowired
 	private ProductDao productDao;
 
@@ -27,19 +26,16 @@ public class ProductServiceImplementation implements ProductService{
 	}
 
 	@Override
-	public boolean editProduct(Product productDto, int productId) {
+	public boolean editProduct(Product productDto, int productId) throws ProductException {
 		// TODO Auto-generated method stub
 		Product product = productDao.findProductId(productId);
-		if(product != null)
-		{
+		if (product == null) {
+			throw new ProductException("ProductId is Not Available");
+		} else {
 			productDao.editProduct(productDto, productId);
 		}
-		else
-		{
-			return true;
-		}
 		return true;
-		
+
 	}
 
 	@Override
