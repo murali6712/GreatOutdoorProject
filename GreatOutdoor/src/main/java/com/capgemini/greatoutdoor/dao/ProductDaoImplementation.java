@@ -39,7 +39,7 @@ public class ProductDaoImplementation implements ProductDao{
 		updateProduct.setProductName(productDto.getProductName());
 		updateProduct.setQuantity(productDto.getQuantity());
 		updateProduct.setSpecification(productDto.getSpecification());
-		entityManager.merge(productDto);
+		
 		return true;
 	}
 	
