@@ -52,32 +52,28 @@ public class ProductServiceTestCases {
 
 	}
 
-	
 	@Test
 	@DisplayName("Test for deleting a product")
-	public void deleteProductTest() throws ProductException
-	{
-		Product product=new Product(21,15000,"Green","13*19","64 MegaPixel","Lenovo",10,"Laptop","Lenovo");
-		assertEquals(true,productService.deleteProductById(product.getProductId()));
-		
+	public void deleteProductTest() throws ProductException {
+		Product product = new Product(21, 15000, "Green", "13*19", "64 MegaPixel", "Lenovo", 10, "Laptop", "Lenovo");
+		assertEquals(true, productService.deleteProductById(product.getProductId()));
+
 	}
-	
+
 	@Test
 	@DisplayName("Test for deleting a product Invalid")
-	public void deleteProductTest1() throws ProductException
-	{
-		Product product=new Product(25,15000,"Green","13*19","64 MegaPixel","Lenovo",10,"Laptop","Lenovo");
-		assertEquals(true,productService.deleteProductById(product.getProductId()));
-		
+	public void deleteProductTest1() throws ProductException {
+		Product product = new Product(25, 15000, "Green", "13*19", "64 MegaPixel", "Lenovo", 10, "Laptop", "Lenovo");
+		assertEquals(true, productService.deleteProductById(product.getProductId()));
+
 	}
-	
+
 	@Test
 	@DisplayName("Test for viewAllProducts products")
-	public void viewAllProducts()
-	{
-		List<Product> list=productService.displayAllProducts();
+	public void viewAllProducts() {
+		List<Product> list = productService.displayAllProducts();
 		assertFalse(list.isEmpty());
-		
+
 		assertTrue(!list.isEmpty());
 	}
 

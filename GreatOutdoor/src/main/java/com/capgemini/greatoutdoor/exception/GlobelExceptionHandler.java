@@ -12,11 +12,11 @@ import org.springframework.web.context.request.WebRequest;
 public class GlobelExceptionHandler {
 
 	@ExceptionHandler(value = ProductException.class)
-	public ResponseEntity<Object> exception(ProductException productException, WebRequest webRequest)
-	{
-		CustomEntityException error = new CustomEntityException(new Date(), productException.getMessage(), webRequest.getDescription(false));
+	public ResponseEntity<Object> exception(ProductException productException, WebRequest webRequest) {
+		CustomEntityException error = new CustomEntityException(new Date(), productException.getMessage(),
+				webRequest.getDescription(false));
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-		
+
 	}
-	
+
 }

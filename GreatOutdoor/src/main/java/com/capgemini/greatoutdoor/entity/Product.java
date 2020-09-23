@@ -1,6 +1,5 @@
 package com.capgemini.greatoutdoor.entity;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,40 +7,39 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-@Entity 
-@Table(name="product")
+@Entity
+@Table(name = "product")
 public class Product {
-	
+
 	@Id
-	@Column(name="product_Id")
+	@Column(name = "product_Id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int productId;
-	
-	@Column(name="price",length=5)
+
+	@Column(name = "price", length = 5)
 	private int price;
-	
-	@Column(length=7)
+
+	@Column(length = 7)
 	private String colour;
-	
-	@Column(name="dimension",length=10)
+
+	@Column(name = "dimension", length = 10)
 	private String dimension;
-	
-	@Column(name="specification",length=15)
+
+	@Column(name = "specification", length = 15)
 	private String specification;
-	
-	@Column(name="manufacturer",length=10)
+
+	@Column(name = "manufacturer", length = 10)
 	private String manufacturer;
-	
-	@Column(name="quantity",length=3)
+
+	@Column(name = "quantity", length = 3)
 	private int quantity;
-	
-	@Column(name="productCategory",length=10)
+
+	@Column(name = "productCategory", length = 10)
 	private String productCategory;
-	
-	@Column(name="productName",length=10)
+
+	@Column(name = "productName", length = 10)
 	private String productName;
-	
+
 	public int getProductId() {
 		return productId;
 	}
@@ -113,7 +111,6 @@ public class Product {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	
 
 	public Product(int productId, int price, String colour, String dimension, String specification, String manufacturer,
 			int quantity, String productCategory, String productName) {
@@ -140,6 +137,4 @@ public class Product {
 				+ quantity + ", productCategory=" + productCategory + ", productName=" + productName + "]";
 	}
 
-		
-	
 }

@@ -10,12 +10,11 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import com.capgemini.greatoutdoor.entity.Product;
 
-
 @Repository
 @Transactional
 
-public class ProductDaoImplementation implements ProductDao{
-	
+public class ProductDaoImplementation implements ProductDao {
+
 	@PersistenceContext
 	EntityManager entityManager;
 
@@ -29,7 +28,7 @@ public class ProductDaoImplementation implements ProductDao{
 	@Override
 	public boolean editProduct(Product productDto, int productId) {
 		// TODO Auto-generated method stub
-		
+
 		Product updateProduct = entityManager.find(Product.class, productId);
 		updateProduct.setColour(productDto.getColour());
 		updateProduct.setDimension(productDto.getDimension());
@@ -39,22 +38,19 @@ public class ProductDaoImplementation implements ProductDao{
 		updateProduct.setProductName(productDto.getProductName());
 		updateProduct.setQuantity(productDto.getQuantity());
 		updateProduct.setSpecification(productDto.getSpecification());
-		
+
 		return true;
 	}
-	
+
 	@Override
 	public boolean deleteProductById(int productId) {
 		// TODO Auto-generated method stub
-		
-		Product order = entityManager.find(Product.class,productId);
-		if(order != null  )
-		{
+
+		Product order = entityManager.find(Product.class, productId);
+		if (order != null) {
 			entityManager.remove(order);
 			return true;
-		}
-		else
-		{
+		} else {
 			return false;
 		}
 	}
@@ -62,28 +58,23 @@ public class ProductDaoImplementation implements ProductDao{
 	@Override
 	public Product findProductId(int productId) {
 		// TODO Auto-generated method stub
-		
+
 		Product order = entityManager.find(Product.class, productId);
-		if(order!=null )
-		{
-			 return order; 
-		}
-		else
-		{
+		if (order != null) {
+			return order;
+		} else {
 			return null;
 		}
-		
+
 	}
 
 	@Override
 	public List<Product> displayAllProducts() {
 		// TODO Auto-generated method stub
-		
+
 		String getAllProducts = "SELECT products FROM Product products";
 		TypedQuery<Product> query = entityManager.createQuery(getAllProducts, Product.class);
 		return query.getResultList();
 	}
-
-	
 
 }
