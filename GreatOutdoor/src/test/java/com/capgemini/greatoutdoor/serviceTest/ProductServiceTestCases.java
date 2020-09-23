@@ -72,9 +72,18 @@ public class ProductServiceTestCases {
 	@DisplayName("Test for viewAllProducts products")
 	public void viewAllProducts() {
 		List<Product> list = productService.displayAllProducts();
+		assertTrue(!list.isEmpty());
 		assertFalse(list.isEmpty());
 
-		assertTrue(!list.isEmpty());
+	}
+	
+	@Test
+	@DisplayName("Test for viewAllProducts products Invalid")
+	public void viewAllProducts1() {
+		List<Product> list = productService.displayAllProducts();
+		assertFalse(!list.isEmpty());
+		assertTrue(list.isEmpty());
+
 	}
 
 }
