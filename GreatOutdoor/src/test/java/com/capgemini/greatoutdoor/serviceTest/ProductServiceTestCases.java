@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +23,7 @@ import com.capgemini.greatoutdoor.service.ProductService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class ProductServiceTestCases {
 
 	@Autowired
@@ -54,11 +57,18 @@ public class ProductServiceTestCases {
 	@DisplayName("Test for deleting a product")
 	public void deleteProductTest() throws ProductException
 	{
-		Product product=new Product();
+		Product product=new Product(21,15000,"Green","13*19","64 MegaPixel","Lenovo",10,"Laptop","Lenovo");
 		assertEquals(true,productService.deleteProductById(product.getProductId()));
 		
-		product=new Product();
-		assertEquals(false,productService.deleteProductById(product.getProductId()));
+	}
+	
+	@Test
+	@DisplayName("Test for deleting a product Invalid")
+	public void deleteProductTest1() throws ProductException
+	{
+		Product product=new Product(25,15000,"Green","13*19","64 MegaPixel","Lenovo",10,"Laptop","Lenovo");
+		assertEquals(true,productService.deleteProductById(product.getProductId()));
+		
 	}
 	
 	@Test
