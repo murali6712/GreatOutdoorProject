@@ -125,6 +125,21 @@ public class Product {
 		this.productCategory = productCategory;
 		this.productName = productName;
 	}
+	
+	
+
+	public Product(int price, String colour, String dimension, String specification, String manufacturer, int quantity,
+			String productCategory, String productName) {
+		super();
+		this.price = price;
+		this.colour = colour;
+		this.dimension = dimension;
+		this.specification = specification;
+		this.manufacturer = manufacturer;
+		this.quantity = quantity;
+		this.productCategory = productCategory;
+		this.productName = productName;
+	}
 
 	public Product() {
 		super();

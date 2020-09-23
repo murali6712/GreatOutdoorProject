@@ -3,7 +3,6 @@ package com.capgemini.greatoutdoor.serviceTest;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 
@@ -23,33 +22,21 @@ import com.capgemini.greatoutdoor.service.ProductService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Transactional
 public class ProductServiceTestCases {
 
 	@Autowired
 	ProductService productService;
 	@MockBean
 	Product productDto;
-
+	
 	@Test
 	@DisplayName("Test for adding an product")
-	public void addProduct() {
-		Throwable expection = assertThrows(ProductException.class, () -> {
-			productService.addProduct(productDto);
-		});
-		assertEquals("error", expection.getMessage());
-		productDto.setColour("RED");
-		productDto.setDimension("13*18");
-		productDto.setManufacturer("Lenovo");
-		productDto.setPrice(10000);
-		productDto.setProductCategory("Laptop");
-		productDto.setProductName("Lenovo");
-		productDto.setQuantity(1);
-		productDto.setSpecification("8GBRAM");
-
-		productService.addProduct(productDto);
-		assertEquals(true, productService.addProduct(productDto));
-
+	public void addProductTest() throws ProductException
+	{
+		
+		Product product=new Product(15000, "Green", "13*19", "64 MegaPixel", "Lenovo", 10, "Laptop", "Lenovo");
+		assertEquals(true,productService.addProduct(product));
+		
 	}
 
 	@Test
